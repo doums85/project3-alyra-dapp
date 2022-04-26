@@ -1,4 +1,4 @@
-# The Voter DAap
+# The Voter DApp
 
 ## INTRODUCTION
 ![screen-wallet-not-connected](https://user-images.githubusercontent.com/72397342/165350606-2b6e3f49-2298-4fb8-911c-5708ee7a9562.png)
