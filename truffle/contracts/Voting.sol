@@ -316,10 +316,10 @@ contract Voting is Ownable {
             "The workflow status not allowed you to start registering proposals."
         );
 
-       require(voters[_voterAddress].isRegistered, "The voter is already not registered.");
-       require(voters[_voterAddress].hasVoted, "The voter has  not voted.");
+        require(voters[_voterAddress].isRegistered, "The voter is already not registered.");
+        if (voters[_voterAddress].account != msg.sender) voters[_voterAddress].isRegistered = false;
 
-        voters[_voterAddress].isRegistered = false;
+        require(voters[_voterAddress].hasVoted, "The voter has  not voted.");
         voters[_voterAddress].hasVoted = false;
 
         delete voters[_voterAddress];

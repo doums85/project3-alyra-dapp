@@ -20,7 +20,8 @@ const SearchBar = ({ workflow, accountData, setAccountData }) => {
 
   // Reset address input
   const resetInput = () => {
-    document.querySelector('#text').value = '';
+    setaddressEntered('')
+    setAccountData((previousState) =>( {...previousState, voterFound:undefined}));
   };
 
   // Conditional for display component

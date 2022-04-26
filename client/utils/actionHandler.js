@@ -41,7 +41,7 @@ export const addVoter = async (accountData, setAccountData, addressEntered) => {
     
       const newVoter = await getVoterInfo(accountData, addressEntered);
       console.log(newVoter);
-      await setVoterToCookie(newVoter);
+      await setVoterToCookie(newVoter,accountData);
       await searchHandler(accountData, setAccountData, addressEntered);
       // Send a notification
       notification('success', `the voter ${factoryAddress(addressEntered)} has been successfully added 🎉`);
@@ -81,14 +81,14 @@ export const searchHandler = async (accountData, setAccountData, addressEntered)
 };
 
 // Voter into Allvoters constant
-export const setVoterToCookie = (newVoter) => {
+export const setVoterToCookie = (newVoter, accountData) => {
   let getAllVotersFromCookie;
   if (!getCookie('allVoters')) {
     getAllVotersFromCookie = getCookie('allVoters')
   }
 
-  getAllVotersFromCookie
-    ? setCookies('allVoters', JSON.stringify([...getAllVotersFromCookie, newVoter]))
+accountData.allVoters
+    ? setCookies('allVoters', JSON.stringify([...accountData.allVoters, newVoter]))
     : setCookies('allVoters', JSON.stringify([newVoter]));
 };
 
@@ -123,12 +123,6 @@ export const getAllProposals = async (voterAddress, proposalData, setProposalDat
 export const voteProposal = async (proposalId, voterAddress, accountData, setAccountData) => {
   const instance = await instanceContract();
   await instance.methods.vote(proposalId).send({ from: voterAddress });
-
-  /*======   accountData.map((voter) => {
-    if (voter.account === voterAddress) {
-      voter.hasVoted = true;
-    }
-  }); =======*/
 };
 
 export const getWinningProposal = async (proposalData, setProposalData) => {

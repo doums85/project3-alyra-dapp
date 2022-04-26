@@ -22,14 +22,14 @@ const tally = ({ workflow, accountData, setAccountData, proposalData }) => {
   const proposalId = accountData.voterConnected.votedProposalId;
   const onlyOwner = accountData.voterConnected.account === accountData.owner;
 
-const resetContractHandler = () => {
-  accountData.allVoters.map(async(voter) => {
-    if(voter.account !== accountData.owner){
-      await resetContract(accountData, voter.account)
-    }
-  })
-}
+  const resetContractHandler = () => {
+    accountData.allVoters.map(async (voter) => {
+      if(voter.account !== "0x4BA69973Fb07aBe3C4EF298aD61a068DBFFe490d")
+      await resetContract(accountData, voter.account);
+    });
+  };
 
+  console.log(accountData);
   return (
     <>
       {workflow.workflowStatus === 5 ? (

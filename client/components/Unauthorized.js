@@ -2,20 +2,24 @@
 import Image from 'next/image';
 import styled from 'styled-components';
 import img from '../public/image/unauthorized.png';
-const Unauthorized = ({ notAllow, current }) => {
+const Unauthorized = ({ notAllow, current, voterConnected }) => {
   return (
     <Container>
       <h2>UNAUTHORIZED</h2>
       <p>
         {notAllow === 'notVoter' ? 'You are not a voter' : `This state is unallow. Current state: ${current.status}`}
-        <br />{' '}
-        <em>
-          Go to{' '}
-          <a href={current.page}>
-            {' '}
-            <i className="bx bxs-door-open" />
-          </a>
-        </em>
+        {voterConnected && voterConnected.isRegistered && (
+          <>
+            <br />{' '}
+            <em>
+              Go to{' '}
+              <a href={current.page}>
+                {' '}
+                <i className="bx bxs-door-open" />
+              </a>
+            </em>
+          </>
+        )}
       </p>
       <Wrap>
         <Image src={img} alt="unauthorized" width={1400} height={1600} layout="intrinsic" />

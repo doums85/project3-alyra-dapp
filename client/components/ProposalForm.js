@@ -11,8 +11,8 @@ const ProposalForm = ({addProposalVoter}) => {
   return (
     <Container>
       <form>
-        <textarea onChange={onChangeHandler} cols="30" rows="10"></textarea>
-        <button onClick={() => addProposalVoter(proposalEntered)}>
+        <textarea onChange={onChangeHandler} cols="30" rows="10" value={proposalEntered}></textarea>
+        <button onClick={(event) => {event.preventDefault(); addProposalVoter(proposalEntered); setProposalEntered('')}}>
           <em>Add proposal</em>{' '}
         </button>
       </form>

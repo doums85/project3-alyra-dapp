@@ -1,13 +1,12 @@
-import { getCookie } from 'cookies-next';
 import { useEffect, useState } from 'react';
-import { toast, ToastContainer } from 'react-toastify';
+import {  ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import ConnectWallet from '../components/ConnectWallet';
 
 import Layout from '../components/Layout/Layout';
 import Unauthorized from '../components/Unauthorized';
 import '../styles/globals.css';
-import { getAllProposals, getAllVotersFromCookie, getWinningProposal } from '../utils/actionHandler';
+import { getAllProposals, getWinningProposal } from '../utils/actionHandler';
 import { getOwner, getVoterConnected } from '../utils/authHandler';
 import { ProposalRegistered, voted, VoterRegistered, WorkFlowChanged } from '../utils/events';
 import { factoryAddress } from '../utils/factoryAddress';
@@ -77,7 +76,8 @@ function MyApp({ Component, pageProps }) {
     'voterConnected' in accountData &&
     accountData.voterConnected &&
     accountData.voterConnected.isRegistered
-console.log(accountData);
+
+
   return (
     <Layout workflow={workflow} accountData={accountData} setAccountData={setAccountData} subtitle={subtitle}>
       {allow && (
@@ -93,7 +93,7 @@ console.log(accountData);
       {accountData && !accountData.voterConnected ? (
         <ConnectWallet />
       ) : (
-        workflow && !allow && <Unauthorized notAllow="notVoter" current={workflow.currentStatus} />
+        workflow && !allow && <Unauthorized notAllow="notVoter" current={workflow.currentStatus}  voterConnected={accountData.voterConnected} />
       )}
 
       <ToastContainer />

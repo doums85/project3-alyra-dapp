@@ -1,6 +1,5 @@
 //import { tallyVotes } from "./actionHandler";
 import { removeCookies } from 'cookies-next';
-import { removeVoter } from './actionHandler';
 import { notification } from './notification';
 import { instanceContract } from './web3Client';
 
@@ -82,7 +81,6 @@ export const tallyVotes = async (instance, owner) => {
 
 // Launch reset contract
 export const resetContract = async ( accountData, account) => {
-  console.log(account);
   const instance = await instanceContract();
   await instance.methods.resetContract(account).send({ from: accountData.owner });
 
