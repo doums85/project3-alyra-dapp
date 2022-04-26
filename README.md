@@ -29,7 +29,7 @@ The voting app will work with differents status:
 ### Home  page
 
 There are 3 cases for this page and the status start automatocally to "Registering Voters"
-<details open>
+<details >
   <summary>Wallet's user is **NOT** connect 👇</summary>
    <br>
 
