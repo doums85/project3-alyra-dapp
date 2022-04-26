@@ -1,6 +1,7 @@
 # The Voter DAap
 
 ## INTRODUCTION
+![screen-wallet-not-connected](https://user-images.githubusercontent.com/72397342/165350606-2b6e3f49-2298-4fb8-911c-5708ee7a9562.png)
 
 The Voter DAap is my blockchain developer training project 3 with [**Alyra**](https://alyra.fr/) **🚀**. I had to create a DAap using my smart contract created while [**project 2**](https://github.com/doums85/alyra-project-2). You can watch the [**demo video**](https://www.loom.com/share/5da67a19f94c467cb78f36824c2ceb50) or follow the step-by-step demos below.
 
